@@ -1,10 +1,10 @@
 baseurl: /uni-notes
 title: Uni-notes
-subtitle: Lecture notes for Unimi.
+subtitle: Lecture notes for Uni etc.
 author: Edoardo Federici
 simple_search: http://google.com/search
 description: Lecture notes for Unimi.
-name: cs228-notes
+name: uni-notes
 markdown_ext: "markdown,mkdown,mkdn,mkd,md"
 permalink: /articles/:short_year/:title
 timezone: Europe
