@@ -1,2 +1,4 @@
 # uni-notes
-Unimi study notes
+
+| ![Flowers](/graph.png) | Study notes etc. |
+|---|---|
