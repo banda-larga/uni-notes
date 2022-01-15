@@ -3,6 +3,7 @@ layout: post
 title: Contents
 ---
 <span class="newthought">Appunti</span> e cose {% include sidenote.html id="note-pgm" note="Università e altro." %}.
+
 {% include marginnote.html id='mn-construction' note='The notes are still **under construction**! Submit a pull request with your fixes to our [GitHub repository](https://github.com/banda-larga/uni-notes).'%}
 You too may help make these notes better by submitting your improvements to us via [GitHub](https://github.com/banda-larga/uni-notes).
 
