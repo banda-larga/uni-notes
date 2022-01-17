@@ -9,7 +9,7 @@ You too may help make these notes better by submitting your improvements via [Gi
 
 ## Notes
 
-1. [Course1](notes/afmds/notes/): Algorithms for Massive Datasets (*under construction*).
+1. [Course1](notes/afmds/intro/): Algorithms for Massive Datasets (*under construction*).
 
 2. [Course2](notes/): course2 (*under construction*).
 
