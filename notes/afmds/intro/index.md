@@ -21,7 +21,8 @@ Ci sono situazioni dove usare i dati in questo modo ha senso. Il tipico caso in 
 
 A parte questo, il machine learning si è provato non ottimale in situazioni in cui possiamo descrivere con più certezza gli *obiettivi* del mining. Un caso interessante è quello della startup *WhizBang! Labs*, che ha cercato di usare il machine learning per trovare i curriculum per le persone nel Web. Non riusciva a fare meglio di algoritmi progettati direttamente per cercare frasi ovvie e parole che appaiono in un tipico curriculum. In questo caso non c'era vantaggio nell'uso di tecniche di machine learning rispetto alla progettazione diretta di un algoritmo. 
 
-Un altro problema con alcuni metodi di machine learning è che portano ad un modello che, per quanto accurato, non è *descrivibile*. In alcuni casi ciò non è importante, per esempio, se chiediamo a Google perché ha classificato certe email come spam, ci risponde con "sembra simile ad altri messaggi che le persone hanno identificato come spam", in altri, ad esempio se parliamo di una compagnia di assicurazioni, sì. 
+{% include marginfigure.html id="bn" url="assets/imgs/johnsnow.png" description="Un famoso esempio di clustering a Londra interamente realizzato senza computer. Il medico John Snow, alle prese con
+un’epidemia di colera, ha tracciato i casi su una mappa della città. I casi si sono raggruppati intorno ad alcune delle intersezioni delle strade. Queste intersezioni erano le posizioni dei pozzi contaminati; le persone che vivevano vicino a questi pozzi si ammalavano, mentre le persone che vivevano più vicino a pozzi non contaminati non si ammalavano. Senza la capacità di raggruppare i dati, la causa del colera non sarebbe stata scoperta." %}Un altro problema con alcuni metodi di machine learning è che portano ad un modello che, per quanto accurato, non è *descrivibile*. In alcuni casi ciò non è importante, per esempio, se chiediamo a Google perché ha classificato certe email come spam, ci risponde con "sembra simile ad altri messaggi che le persone hanno identificato come spam", in altri, ad esempio se parliamo di una compagnia di assicurazioni, sì. 
 
 ### Approcci Computazionali alla Modellazione
 
@@ -34,5 +35,4 @@ Molti degli approcci alla modellazione possono essere descritti come:
 
 ### Riassumendo 
 
-Si andranno a trattare problemi come *Web Mining*, {% include marginfigure.html id="bn" url="assets/imgs/johnsnow.png" description="Un famoso esempio di clustering a Londra interamente realizzato senza computer. Il medico John Snow, alle prese con
-un’epidemia di colera, ha tracciato i casi su una mappa della città. I casi si sono raggruppati intorno ad alcune delle intersezioni delle strade. Queste intersezioni erano le posizioni dei pozzi contaminati; le persone che vivevano vicino a questi pozzi si ammalavano, mentre le persone che vivevano più vicino a pozzi non contaminati non si ammalavano. Senza la capacità di raggruppare i dati, la causa del colera non sarebbe stata scoperta." %}*Clustering*, tecniche per realizzare *Recommender Systems*, *Machine Learning* etc.
+Si andranno a trattare problemi come *Web Mining*, *Clustering*, tecniche per realizzare *Recommender Systems*, *Machine Learning* etc.
