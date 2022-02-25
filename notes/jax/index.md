@@ -155,7 +155,7 @@ mat = random.normal(key, (150, 100))
 batched_x = random.normal(key, (10, 100))
 
 def apply_matrix(v):
-    return jnp.dot(mat, v)
+  return jnp.dot(mat, v)
 ```
 
 
@@ -421,7 +421,7 @@ Usiamo questo pattern per rendere una classe da Stateful a Stateless:
 
 ```python
 class Stateful:
-  state: state
+  state = state
   def stateful_method(
     *args, 
     **kwargs
