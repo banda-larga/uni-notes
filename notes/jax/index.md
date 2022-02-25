@@ -3,7 +3,7 @@ layout: post
 title: JAX
 ---
 
-## Cos'è JAX
+# Cos'è JAX
 
 Jax è una libreria Python (duh). E' una libreria simile a _NumPy_ ma con alcuni accorgimenti in più. E' sviluppata avendo come obiettivo l'efficienza, cosa che le permette di essere molto performante.
 
@@ -88,7 +88,7 @@ JAX si può eseguire su quel che si vuole. Comunque, negli esempi finora visti J
 
 ```python
 def selu(x, alpha=1.67, lambda=1.05):
-	return lambda*jnp.where(x>0, x, alpha*jnp.exp(x)-alpha)
+	  return lambda*jnp.where(x>0, x, alpha*jnp.exp(x)-alpha)
 
 x = random.normal(key, (100000,))
 %timeit selu(x).block_until_ready()
@@ -114,7 +114,7 @@ Oltre a valutare funzioni numeriche, vogliamo applicare trasformazioni. Una tras
 
 ```python
 def sum_logistic(x):
-  return jnp.sum(1.0 / 1.0 + jnp.exp(-x))
+    return jnp.sum(1.0 / 1.0 + jnp.exp(-x))
 
 x_small = jnp.arange(3.)
 derivative_fn = grad(sum_logistic)
@@ -137,7 +137,7 @@ Per calcoli più complessi, ad esempio calcolare la Jacobiana:
 from jax import jacfwd, jacrev
 
 def hessian(fun):
-	return jit(jacfwd(jacrev(fun)))
+	  return jit(jacfwd(jacrev(fun)))
 ```
 
 
@@ -155,7 +155,7 @@ mat = random.normal(key, (150, 100))
 batched_x = random.normal(key, (10, 100))
 
 def apply_matrix(v):
-  return jnp.dot(mat, v)
+    return jnp.dot(mat, v)
 ```
 
 
@@ -165,7 +165,7 @@ Utilizzando ora la funzone possiamo andare a looppare sulle dimensioni
 ```python
 # approccio naive
 def nb_apply_matrix(v_batched):
-  return jnp.stack([apply_matrix(v) for v in v_batched])
+    return jnp.stack([apply_matrix(v) for v in v_batched])
 
 print('Naively batched')
 %timeit nb_apply_matrix(batched_x).block_until_ready()
@@ -176,7 +176,7 @@ print('Naively batched')
 ```python
 @jit
 def b_apply_matrix(v_batched):
-  return jnp.dot(v_batched, mat.T)
+    return jnp.dot(v_batched, mat.T)
 
 print('Manually batched')
 %timeit b_apply_matrix(batched_x).block_until_ready()
@@ -190,7 +190,7 @@ Supponiamo di avere una funzione più complessa, senza batching. Possiamo usare 
 ```python
 @jit
 def vmap_b_apply_matrix(v_batched):
-  return vmap(apply_matrix)(v_batched)
+    return vmap(apply_matrix)(v_batched)
 
 print('Auto-vectorized with vmap')
 %timeit vmap_b_apply_matrix(batched_x).block_until_ready()
@@ -198,7 +198,7 @@ print('Auto-vectorized with vmap')
 ```
 
 
-## JAX vs NumPy
+# JAX vs NumPy
 
 JAX è un noto cantante italiano. Usare JAX con efficacia richiede sforzi mentali, bisogna spremere le meningi. 
 
@@ -283,8 +283,8 @@ Prendiamo una funzione che normalizza le righe di una matrice 2D:
 import jax.numpy as jnp
 
 def norm(X):
-  X = X - X.mean(0)
-  return X / X.std(0)
+    X = X - X.mean(0)
+    return X / X.std(0)
 ```
 
 
@@ -314,7 +314,7 @@ Se invece andiamo a scrivere una funzione le cui dimensioni dell'input array non
 
 ```python
 def get_negatives(x):
-  return x[x < 0]
+    return x[x < 0]
 
 x = jnp.array(np.random.randn(10))
 get_negatives(x)
@@ -335,7 +335,7 @@ Se vogliamo vedere come la funzione è codificata in jax, la jaxpr per essere br
 from jax import make_jaxpr
 
 def f(x, y):
-  return jnp.dot(x + 1, y + 1)
+    return jnp.dot(x + 1, y + 1)
 
 make_jaxpr(f)(x, y)
 #{ lambda  ; a b.
@@ -358,7 +358,7 @@ from jax import jit
 
 @jit
 def f(x):
-  return x.reshape(jnp.array(x.shape).prod())
+    return x.reshape(jnp.array(x.shape).prod())
 
 x = jnp.ones((2, 3))
 f(x)
@@ -378,11 +378,148 @@ import numpy as np
 
 @jit
 def f(x):
-  return x.reshape((np.prod(x.shape),))
+    return x.reshape((np.prod(x.shape),))
 
 f(x)
 # DeviceArray([1., 1., 1., 1., 1., 1.], dtype=float32)
 ```
 
-
 Per questo quando si usa JAX ci serve anche NumPy. Va usato un po' di tutto di questi tempi. 
+
+# Machine Learning con JAX
+
+JAX è essenzialmente legato al paradigma funzionale. Ama la purezza infinita nelle funzioni.
+
+```python
+state = 0
+
+def impura(x):
+  	return x + g 
+```
+
+Se andiamo ad eseguire questa due volte e la variabile globale cambia nel mentre, la funzione utilizzando jit viene cachata e restituisce la somma con lo stato cachato. 
+
+```
+print(jit(impura)(3.))
+# 3.
+state = 3 # andiamo a cambiarla
+print(jit(impura)(3.))
+# 3.
+```
+
+Anche se si vogliono generare numeri random, mentre il PRNG in NumPy è stateful, in JAX no.. te pareva
+
+```python
+seed = 0
+state = jax.random.PRNGKey(seed)
+state1, state2 = jax.random.split(state)
+```
+
+## Stateful to Stateless
+
+Usiamo questo pattern per rendere una classe da Stateful a Stateless:
+
+```python
+class Stateful:
+		state: state
+  	def stateful_method(
+      	*args, 
+      	**kwargs
+    ) -> Output:
+```
+
+```python
+class Stateless:
+  	def stateful_method(
+      	state, 
+      	*args, 
+      	**kwargs
+    ) -> (Output, State):
+```
+
+## PyTree
+
+Come JAX gestisce i gradienti. 
+
+```python
+f = lambda x, y, z, w = x**3 + y**2 + sqrt(z) + w
+x, y, z, w = [1.]*4
+dfdx, dfdy, dfdz, dfdw = grad(
+    f, 
+    argnums=(0, 1, 2, 3) # dobbiamo esplicitarli
+)(x, y, z, w)
+
+w -= w*dfdw
+```
+
+Questo non scala a 175 Miliardi di parametri ahah.
+
+Siccome andiamo a wrappare i nostri parametri in strutture più complesse, pythree permette di trovare i gradienti in maniera più semplice. 
+
+Avendo una struttura un po' più nested, possiamo andare a chiamare una funzione sul PyTree che ci dice quali sono le foglie:
+
+```python
+leaves = jax.tree_leaves(pytree)
+```
+
+Se vogliamo manipolare le foglie del nostro albero:
+
+```python
+jax.tree_map(lambda x: x**3, pytree)
+
+# se abbiamo più pytrees
+pytree2 = pytree
+jax.tree_multimap(lambda x, y: x+y, pytree, pytree2)
+# somma e ci restituisce un pytree
+```
+
+Devono avere la stessa struttura per il multimap. 
+
+## Semplice NN
+
+```python
+# inizializziamo
+for n_in, n_out in zip(layer_w[:-1], layer_w[1:]):
+  	params.append(
+      	dict(
+          	weights = np.random.normal(size = (n_in, n_out)) ** np.sqrt(2 / n_in), 
+          	biases = np.ones(shape=(n_out,))
+        )
+    )
+    return params 
+
+params = init_mlp_params([1, 128, 128, 1])
+print(jax.tree_map(lambda x: x.shape, params))
+
+# forward
+def forward(params, x):
+  	*hidden, last = params
+    for layer in hidden:
+      	x = jax.nn.relu(jnp.dot(x, layer['weights']) + layer['biases'])
+
+# MSE loss
+def loss(params, x, y):
+  	return jnp.mean((forward(params, x) - y) ** 2)
+
+# update dei parametri
+lr = 0.0001
+@jit 
+def update(params, x, y):
+    grads = jax.grad(loss)(params, x, y)
+    # SGD 
+    return jax.tree_multimap(
+        lambda p, g: p - lr*g, params, grads
+    )
+
+# addestriamo su una funzione seno
+xs = np.random.normal(size=(128, 1))
+ys = np.sin(xs)
+
+EPOCHS = 2000
+for _ in range(EPOCHS):
+  	params = update(params, xs, ys)
+    
+plt.scatter(xs, ys)
+plt.scatter(xs, forward(params, xs), label = 'predictions')
+plt.legend()
+```
