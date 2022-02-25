@@ -25,7 +25,7 @@ I nodi sono correlati: nodi vicini hanno lo stesso colore e appartengono alla st
 
 Perché i nodi sono correlati? 
 
-- Homofilia: la tendenza degli individui ad associarsi a quelli simili fra loro. (ricercatori dello stesso campo, uccelli)
+- Omofilia: la tendenza degli individui ad associarsi a quelli simili fra loro. (ricercatori dello stesso campo, uccelli)
 - Influenza: le connessioni sociali possono influenzare le caratteristiche di una persona. (consigli musicali fra persone)
 
 Come possiamo _strutturare_ questa _correlazione_ fra nodi per prevedere le labels dei nodi? 
