@@ -479,14 +479,15 @@ Devono avere la stessa struttura per il multimap.
 
 ```python
 # inizializziamo
-for n_in, n_out in zip(layer_w[:-1], layer_w[1:]):
-  params.append(
-    dict(
-      weights = np.random.normal(size = (n_in, n_out)) ** np.sqrt(2 / n_in), 
-      biases = np.ones(shape=(n_out,))
+def init_mlp_params(layer_w):
+  for n_in, n_out in zip(layer_w[:-1], layer_w[1:]):
+    params.append(
+      dict(
+        weights = np.random.normal(size = (n_in, n_out)) ** np.sqrt(2 / n_in), 
+        biases = np.ones(shape=(n_out,))
+      )
     )
-  )
-  return params 
+    return params 
 
 params = init_mlp_params([1, 128, 128, 1])
 print(jax.tree_map(lambda x: x.shape, params))
