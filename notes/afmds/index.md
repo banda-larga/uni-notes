@@ -9,7 +9,7 @@ title: Algos for Massive Datasets
 
 ### Vector Spaces
 
-**Vector spaces** are sets (the elements are called vectors) on which two operations are defined: vectors can be added (_sum_) and they can be multiplied by real numbers (_scalars_){% include sidenote.html id='note-fields' note='More generally vector spaces can be defined over any Field. We take $$\R$$ to avoid any diversion into abstract algebra' %}. 
+**Vector spaces** are sets (the elements are called vectors) on which two operations are defined: vectors can be added (_sum_) and they can be multiplied by real numbers (_scalars_). More generally vector spaces can be defined over any Field. We take $$\R$$ to avoid any diversion into abstract algebra.
 
 A set of vectors $$v_1, \dots, v_n \in V$$ is said to be **linearly independent** if:
 $$
@@ -42,7 +42,7 @@ In algebraic terms, a linear map is also called a **homomorphism** of vector spa
 
 To represent vectors and to manipulate them, we use **matrices**. 
 
-Suppose $$V$$ and $$W$$ to be finite-dimensional{% include sidenote.html id='note-fd' note='Is finite-dimensional if is spanned by a finite number of vectors.' %}, $$\mathbf{v}_{1}, \dots, \mathbf{v}_{n}$$ and $$\mathbf{w}_{1}, \dots, \mathbf{w}_{m}$$ are basis for the vector spaces, and $$T:V \to W$$ a linear map. Then, the matrix of $$T$$, with entries $$A_{ij}$$ where $$i=1, \dots, m$$, $$j=1, \dots, n$$ is defined by 
+Suppose $$V$$ and $$W$$ to be finite-dimensional (Is finite-dimensional if it is spanned by a finite number of vectors), $$\mathbf{v}_{1}, \dots, \mathbf{v}_{n}$$ and $$\mathbf{w}_{1}, \dots, \mathbf{w}_{m}$$ are basis for the vector spaces, and $$T:V \to W$$ a linear map. Then, the matrix of $$T$$, with entries $$A_{ij}$$ where $$i=1, \dots, m$$, $$j=1, \dots, n$$ is defined by 
 $$
 T\mathbf{v}_j = A_{1j}\mathbf{w}_1 + \dots + A_{mj}\mathbf{w}_m
 $$
@@ -76,7 +76,7 @@ Any norm on $$V$$ induces a distance metric on $$V$$:
 $$
 d(\mathbf{x}, \mathbf{y}) = \lVert \mathbf{x} - \mathbf{y} \rVert
 $$
-So we can say that any normed space is also a metric space{% sidenote.html id='note-banach' note='If a normed space is _complete_ with respect to the distance metric induced by its norm it is a **Banach space**.' %}. 
+So we can say that any normed space is also a metric space. If a normed space is _complete_ with respect to the distance metric induced by its norm it is a **Banach space**.
 
 On $$\R^n$$ we have some specific norms:
 
@@ -97,7 +97,7 @@ A vector space endowed with an inner product is called an **inner product space*
 $$
 \lVert \mathbf{x} \rVert = \sqrt{\langle \mathbf{x}, \mathbf{x} \rangle}
 $$
-Therefore, any inner product space is also a normed space (and also a metric space){% include sidenote.html id='note-hilbert' note='If a normed space is _complete_ with respect to the distance metric induced by its inner product it is a **Hilbert space**.' %}. 
+Therefore, any inner product space is also a normed space (and also a metric space). If a normed space is _complete_ with respect to the distance metric induced by its inner product it is a **Hilbert space**. 
 
 Two vector are **orthogonal** if $$\langle \mathbf{x}, \mathbf{y} \rangle = 0$$. Orhogonality generalize the notion of perpendicularity on Euclidean space. If two orthogonal vectors have also unit length, they are **orthonormal**.
 
@@ -128,7 +128,7 @@ $$
 
 ### Hessian 
 
-The **Hessian**{% include sidenote.html id='note-hess' note='The hessian is used in some optimization algos such as **Newton's method**.'%} of $$f: \R^d \to \R$$ is a matrix of second-order partial derivatives:
+The **Hessian** (The hessian is used in some optimization algos such as **Newton's method**) of $$f: \R^d \to \R$$ is a matrix of second-order partial derivatives:
 $$
 (\mathbf{H}_f)_{ij} \equiv \frac{\partial^{2} f}{\partial x_{i} \partial x_{j}}, \quad (\nabla^2)
 $$
