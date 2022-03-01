@@ -205,7 +205,7 @@ plt.clabel(cp)
 plt.show()
 ```
 
-{% include marginfigure.html id="bn" url="assets/imgs/contoutPlot.png" description="contour plot" %}
+{% include marginfigure.html id="bn" url="assets/imgs/contourPlot.png" description="contour plot" %}
 
 ### Derivatives of multi-variable functions
 
