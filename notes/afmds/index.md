@@ -9,21 +9,25 @@ title: Algos for Massive Datasets
 
 ### Vector Spaces
 
-**Vector spaces** are sets (the elements are called vectors) on which two operations are defined: vectors can be added (_sum_) and they can be multiplied by real numbers (_scalars_). More generally vector spaces can be defined over any Field. We take $$\R$$ to avoid any diversion into abstract algebra.
+**Vector spaces** are sets (the elements are called vectors) on which two operations are defined: vectors can be added (_sum_) and they can be multiplied by real numbers (_scalars_). More generally vector spaces can be defined over any Field. We take $$\mathbb{R}$$ to avoid any diversion into abstract algebra.
 
 A set of vectors $$v_1, \dots, v_n \in V$$ is said to be **linearly independent** if:
+
 $$
 \alpha_1v_1 + \dots + \alpha_nv_n = 0 \implies \alpha_1 + \dots + \alpha_n = 0
 $$
+
 The **span** of vectors in the set is the set of all vectors that can be expressed as a linear combination of them. If a set of vectors is linearly independent and its span is the whole of $$V$$, those vectors are said to be a **basis** of V. 
 
 ### Euclidean Space
 
-With $$\R^n$$ we denote the Euclidean space. The vectors in this space consist of $n$-tuples of real numbers:
+With $$\mathbb{R}^n$$ we denote the Euclidean space. The vectors in this space consist of $$n$$-tuples of real numbers:
+
 $$
 \mathbf{x} = (x_1, x_2, \dots, x_n)
 $$
-It will be useful to think of them as $$x \times 1$$ matrices (or _column vectors_).
+
+It will be useful to think of them as $$n \times 1$$ matrices (or _column vectors_).
 
 Addition and scalar multiplication are defined component-wise on vectors.
 
@@ -31,8 +35,8 @@ Addition and scalar multiplication are defined component-wise on vectors.
 
 A **linear map** is a function $$T:V \to W$$, where $$V$$ and $$W$$ are vector spaces, that satisfies:
 
-- $$T(\mathbf{x} + \mathbf{y}) = T\mathbf{x} + T\mathbf{y}$$ $$\forall \mathbf{x}, \mathbf{y} in V$$
-- $$T(\alpha\mathbf{x}) = \alphaT\mathbf{x}$$ $$\forall \mathbf{x} in V$$, $$\alpha \in \R$$
+- $$T(\mathbf{x} + \mathbf{y}) = T\mathbf{x} + T\mathbf{y}$$ $$\forall \mathbf{x}, \mathbf{y} \in V$$
+- $$T(\alpha\mathbf{x}) = \alpha T \mathbf{x}$$ $$\forall \mathbf{x} in V$$, $$\alpha \in \mathbb{R}$$
 
 A linear map from $$V$$ to itself is called a **linear operator**.
 
@@ -42,23 +46,25 @@ In algebraic terms, a linear map is also called a **homomorphism** of vector spa
 
 To represent vectors and to manipulate them, we use **matrices**. 
 
-Suppose $$V$$ and $$W$$ to be finite-dimensional (Is finite-dimensional if it is spanned by a finite number of vectors), $$\mathbf{v}_{1}, \dots, \mathbf{v}_{n}$$ and $$\mathbf{w}_{1}, \dots, \mathbf{w}_{m}$$ are basis for the vector spaces, and $$T:V \to W$$ a linear map. Then, the matrix of $$T$$, with entries $$A_{ij}$$ where $$i=1, \dots, m$$, $$j=1, \dots, n$$ is defined by 
+Suppose $$V$$ and $$W$$ to be finite-dimensional (Is finite-dimensional if it is spanned by a finite number of vectors), $$\mathbf{v}_{1}, \dots, \mathbf{v}_{n}$$ and $$\mathbf{w}_{1}, \dots, \mathbf{w}_{m}$$ are basis for the vector spaces, and $$T:V \to W$$ a linear map. Then, the matrix of $$T$$, with entries $$A_{ij}$$ where $$i=1, \dots, m$$, $$j=1, \dots, n$$ is defined by:
+
 $$
 T\mathbf{v}_j = A_{1j}\mathbf{w}_1 + \dots + A_{mj}\mathbf{w}_m
 $$
+
 That is, the _j_-th column of $$\mathbf{A}$$ consists of the coordinates of $$T\mathbf{v_j}$$ in the chosen basis for $$W$$. 
 
-Every matrix $$A \in \R^{n \times m}$$ induces a linear map $$T: \R^n \to \R^m$$ given by:
+Every matrix $$A \in \mathbb{R}^{n \times m}$$ induces a linear map $$T: \mathbb{R}^n \to \mathbb{R}^m$$ given by:
 $$
 T\mathbf{x} = \mathbf{A}\mathbf{x}
 $$
-If $$\mathbf{A} \in \R^{n \times m}$$, its _transpose_ $$\mathbf{A}^T \in \R^{n \times m}$$ is given by $$(\mathbf{A}^T)_{ij} = \mathbf{A}_{ji}$$. 
+If $$\mathbf{A} \in \mathbb{R}^{n \times m}$$, its _transpose_ $$\mathbf{A}^T \in \mathbb{R}^{n \times m}$$ is given by $$(\mathbf{A}^T)_{ij} = \mathbf{A}_{ji}$$. 
 
 ### Metric Spaces
 
 Metrics generalize the notion of distance. 
 
-A metric on a set $$S$$ is a function $$d: S \times S \to \R$$ with its properties (positivity, symmetry and triangle inequality). 
+A metric on a set $$S$$ is a function $$d: S \times S \to \mathbb{R}$$ with its properties (positivity, symmetry and triangle inequality). 
 
 A key motivation for metrics is that they allow limits to be defined for mathematical objects other than real numbers. A sequence converces to the limit _tot_ if for any $$\epsilon$$ ... $$d(x_n, x) \lt \epsilon $$ ...
 
@@ -67,18 +73,22 @@ A key motivation for metrics is that they allow limits to be defined for mathema
 Norms generalize the notion of length from Euclidean space. 
 
 A **norm** on a real vector space is a function:
+
 $$
-\lVert \cdot \rVert : V \to \R
+\lVert \cdot \rVert : V \to \mathbb{R}
 $$
+
 A vector space endowed with a norm is called a **normed vector space** (or simly a **normed space**).
 
 Any norm on $$V$$ induces a distance metric on $$V$$:
+
 $$
 d(\mathbf{x}, \mathbf{y}) = \lVert \mathbf{x} - \mathbf{y} \rVert
 $$
+
 So we can say that any normed space is also a metric space. If a normed space is _complete_ with respect to the distance metric induced by its norm it is a **Banach space**.
 
-On $$\R^n$$ we have some specific norms:
+On $$\mathbb{R}^n$$ we have some specific norms:
 
 - $$\lVert \mathbf{x} \rVert_1 = \sum_{i = 1}^{n} |x_i|$$
 - $$\lVert \mathbf{x} \rVert_2 = \sqrt{\sum_{i = 1}^{n} x_i^2}$$
@@ -87,19 +97,23 @@ On $$\R^n$$ we have some specific norms:
 
 ### Inner Product Spaces
 
-An **inner product** on a real vector space is a function $$\langle \cdot, \cdot \rangle : V \times V \to \R$$ satisfying:
+An **inner product** on a real vector space is a function $$\langle \cdot, \cdot \rangle : V \times V \to \mathbb{R}$$ satisfying:
 
 - $$\langle \mathbf{x}, \mathbf{y} \rangle \ge 0 \Leftrightarrow \mathbf{x} = \mathbf{o}$$
 - $$\langle \mathbf{x} + \mathbf{y}, \mathbf{z}\rangle = \langle \mathbf{x}, \mathbf{z}\rangle + \langle \mathbf{y}, \mathbf{z}\rangle$$ and $$\langle \alpha\mathbf{x}, \mathbf{y}\rangle = \alpha\langle \mathbf{x}, \mathbf{y} \rangle$$
 - $$\langle\mathbf{x}, \mathbf{y}\rangle =\langle \mathbf{y}, \mathbf{x} \rangle$$
 
 A vector space endowed with an inner product is called an **inner product space**. Any inner product on V induces a norm on V:
+
 $$
 \lVert \mathbf{x} \rVert = \sqrt{\langle \mathbf{x}, \mathbf{x} \rangle}
 $$
+
 Therefore, any inner product space is also a normed space (and also a metric space). If a normed space is _complete_ with respect to the distance metric induced by its inner product it is a **Hilbert space**. 
 
-Two vector are **orthogonal** if $$\langle \mathbf{x}, \mathbf{y} \rangle = 0$$. Orhogonality generalize the notion of perpendicularity on Euclidean space. If two orthogonal vectors have also unit length, they are **orthonormal**.
+Two vector are **orthogonal** if $$\langle \mathbf{x}, \mathbf{y} \rangle = 0$$. Orhogonality generalize the notion of perpendicularity on Euclidean space. 
+
+If two orthogonal vectors have also unit length, they are **orthonormal**.
 
 
 
@@ -109,26 +123,30 @@ Sometimes we have a function to minimize (**objective function**), which is a sc
 
 ### Extrema 
 
-Optimization is mainly about finding **extrema**. When defining extrema, it is useful to consider the set of inputs over which we are optimizing (this set is called _feasible set_). If this set (we call it $$\chi \subseteq \R^d$$) is the entire domain of the function being optimized, the problem is **unconstrained**. Otherwise it is **constrained** ahah. 
+Optimization is mainly about finding **extrema**. When defining extrema, it is useful to consider the set of inputs over which we are optimizing (this set is called _feasible set_). If this set (we call it $$\chi \subseteq \mathbb{R}^d$$) is the entire domain of the function being optimized, the problem is **unconstrained**. Otherwise it is **constrained** ahah. 
 
 ### Gradients 
 
-It is important. Yep bro. Gradients generalize derivatives to scalar functions of several variables. The gradient of $$f:\R^d \to \R$$, denoted with 
+It is important. Yep bro. Gradients generalize derivatives to scalar functions of several variables. The gradient of $$f:\mathbb{R}^d \to \mathbb{R}$$, denoted with:
+
 $$
 \nabla f = \begin{bmatrix} \frac{\partial f}{\partial x_1}\\ \vdots \\ \frac{\partial f}{\partial x_n} \end{bmatrix}, \quad \nabla_i f =  \frac{\partial f}{\partial x_i}
 $$
+
 Gradients: $$\nabla f(\mathbf{x})$$ points in the direction of **steepest ascent**, $$- \nabla f(\mathbf{x})$$ points in the direction of **steepest descent**. We will use it frequently when minimizing a function via _gradient descent_.
 
 ### Jacobian
 
-The **Jacobian** of $$f:\R^n \to \R^m$$ is a matrix of first-order partial derivatives:
+The **Jacobian** of $$f:\mathbb{R}^n \to \mathbb{R}^m$$ is a matrix of first-order partial derivatives:
+
 $$
 \mathbf{J}_f = \begin{bmatrix} \frac{\partial f_1}{\partial x_1} \dots \frac{\partial f_1}{\partial x_n}\\ \vdots \quad \ddots \quad \vdots \\ \frac{\partial f_m}{\partial x_1} \dots \frac{\partial f_m}{\partial x_n} \end{bmatrix}, \quad (\mathbf{J}_f)_{ij} =  \frac{\partial f}{\partial x_i}
 $$
 
 ### Hessian 
 
-The **Hessian** (The hessian is used in some optimization algos such as **Newton's method**) of $$f: \R^d \to \R$$ is a matrix of second-order partial derivatives:
+The **Hessian** (The hessian is used in some optimization algos such as **Newton's method**) of $$f: \mathbb{R}^d \to \mathbb{R}$$ is a matrix of second-order partial derivatives:
+
 $$
 (\mathbf{H}_f)_{ij} \equiv \frac{\partial^{2} f}{\partial x_{i} \partial x_{j}}, \quad (\nabla^2)
 $$
@@ -145,7 +163,7 @@ Vanishing gradient is necessary for an extremum: if $$\nabla f(\mathbf{x})$$ is 
 
 We will analyze real-valued functions having two or more real arguments. 
 
-Starting with the simplest case: $$f: \R^2 \to \R$$. Such functions can be easily visualized in graphical form. 
+Starting with the simplest case: $$f: \mathbb{R}^2 \to \mathbb{R}$$. Such functions can be easily visualized in graphical form. 
 
 Consider the function:
 $$
@@ -274,6 +292,7 @@ def laplacian(expr, x_val, y_val):
                                  
     return sum(l)
 ```
+
 
 # Altro
 
