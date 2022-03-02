@@ -54,7 +54,7 @@ $$
 T\mathbf{v}_j = A_{1j}\mathbf{w}_1 + \dots + A_{mj}\mathbf{w}_m
 $$
 
-That is, the _j_-th column of $$\mathbf{A}$$ consists of the coordinates of $$T\mathbf{v_j}$$ in the chosen basis for $$W$$. 
+That is, the _j_-th column of $$\mathbf{A}$$ consists of the coordinates of $$T\mathbf{v}_j$$ in the chosen basis for $$W$$. 
 
 Every matrix $$A \in \mathbb{R}^{n \times m}$$ induces a linear map $$T: \mathbb{R}^n \to \mathbb{R}^m$$ given by:
 $$
@@ -73,7 +73,6 @@ A key motivation for metrics is that they allow limits to be defined for mathema
 ### Normed Spaces 
 
 Norms generalize the notion of length from Euclidean space. 
-
 A **norm** on a real vector space is a function:
 
 $$
@@ -88,7 +87,7 @@ $$
 d(\mathbf{x}, \mathbf{y}) = \lVert \mathbf{x} - \mathbf{y} \rVert
 $$
 
-So we can say that any normed space is also a metric space. If a normed space is _complete_ with respect to the distance metric induced by its norm it is a **Banach space**.
+So we can say that any normed space is also a metric space. {% include sidenote.html id="note-banach" note="If a normed space is _complete_ with respect to the distance metric induced by its norm it is a **Banach space**." %} 
 
 On $$\mathbb{R}^n$$ we have some specific norms:
 
@@ -101,17 +100,17 @@ On $$\mathbb{R}^n$$ we have some specific norms:
 
 An **inner product** on a real vector space is a function $$\langle \cdot, \cdot \rangle : V \times V \to \mathbb{R}$$ satisfying:
 
-- $$\langle \mathbf{x}, \mathbf{y} \rangle \ge 0 \Leftrightarrow \mathbf{x} = \mathbf{o}$$
-- $$\langle \mathbf{x} + \mathbf{y}, \mathbf{z}\rangle = \langle \mathbf{x}, \mathbf{z}\rangle + \langle \mathbf{y}, \mathbf{z}\rangle$$ and $$\langle \alpha\mathbf{x}, \mathbf{y}\rangle = \alpha\langle \mathbf{x}, \mathbf{y} \rangle$$
+- $$\langle \mathbf{x}, \mathbf{y} \rangle \ge 0 \Leftrightarrow \mathbf{x} = \mathbf{0}$$
+- $$\langle \mathbf{x} + \mathbf{y}, \mathbf{z}\rangle = \langle \mathbf{x}, \mathbf{z}\rangle + \langle \mathbf{y}, \mathbf{z}\rangle$$, \quad \langle \alpha\mathbf{x}, \mathbf{y}\rangle = \alpha\langle \mathbf{x}, \mathbf{y} \rangle$$
 - $$\langle\mathbf{x}, \mathbf{y}\rangle =\langle \mathbf{y}, \mathbf{x} \rangle$$
 
-A vector space endowed with an inner product is called an **inner product space**. Any inner product on V induces a norm on V:
+A vector space endowed with an inner product is called an **inner product space**. Any inner product on $$V$$ induces a norm on $$V$$:
 
 $$
 \lVert \mathbf{x} \rVert = \sqrt{\langle \mathbf{x}, \mathbf{x} \rangle}
 $$
 
-Therefore, any inner product space is also a normed space (and also a metric space). If a normed space is _complete_ with respect to the distance metric induced by its inner product it is a **Hilbert space**. 
+Therefore, any inner product space is also a normed space (and also a metric space). {% include sidenote.html id="note-hilbert" note="If a normed space is _complete_ with respect to the distance metric induced by its inner product it is a **Hilbert space**." %}
 
 Two vector are **orthogonal** if $$\langle \mathbf{x}, \mathbf{y} \rangle = 0$$. Orhogonality generalize the notion of perpendicularity on Euclidean space. 
 
@@ -147,7 +146,7 @@ $$
 
 ### Hessian 
 
-The **Hessian** (The hessian is used in some optimization algos such as **Newton's method**) of $$f: \mathbb{R}^d \to \mathbb{R}$$ is a matrix of second-order partial derivatives:
+The **Hessian** {% include marginnote.html id="mn-hess" note="(The hessian is used in some optimization algos such as **Newton's method**)" %} of $$f: \mathbb{R}^d \to \mathbb{R}$$ is a matrix of second-order partial derivatives:
 
 $$
 (\mathbf{H}_f)_{ij} \equiv \frac{\partial^{2} f}{\partial x_{i} \partial x_{j}}, \quad (\nabla^2)
@@ -297,20 +296,6 @@ def laplacian(expr, x_val, y_val):
                                  
     return sum(l)
 ```
-<code>
-def hessian(expr, x_val, y_val):
-    hessian_matrix = sympy.Matrix([[sympy.diff(expr, v1, v2)
-                                    for v1 in (x, y)]
-                                    for v2 in (x, y)])
-    return float(hessian_matrix.subs([(x, x_val), (y, y_val)]).det())
-
-def laplacian(expr, x_val, y_val):
-    l = [float(sympy.diff(expr, v, v).subs([(x, x_val), (y, y_val)]))
-        for v in (x, y)]
-                                 
-    return sum(l)
-</code>
-
 
 
 # <center>Altro</center>
