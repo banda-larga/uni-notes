@@ -1,9 +1,9 @@
 baseurl: /uni-notes
 title: Uni-notes
-subtitle: Lecture notes for Uni etc.
+subtitle: Notes.
 author: Edoardo Federici
 simple_search: http://google.com/search
-description: Lecture notes for Unimi.
+description: Notes.
 name: uni-notes
 markdown_ext: "markdown,mkdown,mkdn,mkd,md"
 permalink: /articles/:short_year/:title
@@ -18,7 +18,7 @@ page:
   extension: md
 editor: gvim
 git:
-  branch: master
+  branch: gh-pages
 transfer:
   command: rsync
   settings: -av
