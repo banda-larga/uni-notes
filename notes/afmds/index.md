@@ -11,7 +11,7 @@ title: Algorithms for Massive Datasets
 
 ### Vector Spaces
 
-**Vector spaces** are sets (the elements are called vectors) on which two operations are defined: vectors can be added (_sum_) and they can be multiplied by real numbers (_scalars_). More generally vector spaces can be defined over any Field. We take $$\mathbb{R}$$ to avoid any diversion into abstract algebra. {% sidenote "sidenote-uno" "This is a random sidenote" %}
+**Vector spaces** are sets (the elements are called vectors) on which two operations are defined: vectors can be added (_sum_) and they can be multiplied by real numbers (_scalars_). More generally vector spaces can be defined over any Field. We take $$\mathbb{R}$$ to avoid any diversion into abstract algebra.
 
 A set of vectors $$v_1, \dots, v_n \in V$$ is said to be **linearly independent** if:
 
