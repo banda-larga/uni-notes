@@ -1,15 +1,17 @@
 ---
 layout: post
-title: Algos for Massive Datasets
+title: Algorithms for Massive Datasets
 ---
 
-# Mathematical Preliminaries 
+{% include maincolumn_img.html src='assets/imgs/op.png' description='' %}
+
+## <center>Mathematical Preliminaries</center> 
 
 ## Linear Algebra
 
 ### Vector Spaces
 
-**Vector spaces** are sets (the elements are called vectors) on which two operations are defined: vectors can be added (_sum_) and they can be multiplied by real numbers (_scalars_). More generally vector spaces can be defined over any Field. We take $$\mathbb{R}$$ to avoid any diversion into abstract algebra.
+**Vector spaces** are sets (the elements are called vectors) on which two operations are defined: vectors can be added (_sum_) and they can be multiplied by real numbers (_scalars_). More generally vector spaces can be defined over any Field. We take $$\mathbb{R}$$ to avoid any diversion into abstract algebra. {% sidenote "sidenote-uno" "This is a random sidenote" %}
 
 A set of vectors $$v_1, \dots, v_n \in V$$ is said to be **linearly independent** if:
 
@@ -36,7 +38,7 @@ Addition and scalar multiplication are defined component-wise on vectors.
 A **linear map** is a function $$T:V \to W$$, where $$V$$ and $$W$$ are vector spaces, that satisfies:
 
 - $$T(\mathbf{x} + \mathbf{y}) = T\mathbf{x} + T\mathbf{y}$$ $$\forall \mathbf{x}, \mathbf{y} \in V$$
-- $$T(\alpha\mathbf{x}) = \alpha T \mathbf{x}$$ $$\forall \mathbf{x} in V$$, $$\alpha \in \mathbb{R}$$
+- $$T(\alpha\mathbf{x}) = \alpha T \mathbf{x}$$ $$\forall \mathbf{x} \in V$$, $$\alpha \in \mathbb{R}$$
 
 A linear map from $$V$$ to itself is called a **linear operator**.
 
@@ -270,14 +272,17 @@ plt.show()
 Second-order derivatives can be used in order to search for local optima of a function. We have seen **Hessian** matrices, and now we define the **Hessian** of a fuction as the determinant of the Hessian matrix. 
 
 We call **Laplacian** the sum (over $$n$$) of the second-order derivatives:
+
 $$
 \Delta f(x_1, \dots, x_n) = \sum_{i=1}^n \frac{\partial^2 f}{\partial x_i^2}
 $$
+
 It is possible to show that, given a point $$(x_1, \dots, x_n)$$ such that $$\nabla f(x_1, \dots, x_n) = 0$$:
 
 - if $$\det \left( \mathrm H_f(x_1, \dots, x_n) \right) < 0$$, $$(x_1, \dots, x_n)$$ is a saddle point for $$f$$;
 - if $$\det \left( \mathrm H_f(x_1, \dots, x_n) \right) > 0$$ and $$\Delta f(x_1, \dots, x_n) > 0$$, $$(x_1, \dots, x_n)$$ is a (either local or global) minimum of $$f$$;
 - if $$\det \left( \mathrm H_f(x_1, \dots, x_n) \right) > 0$$ and $$\Delta f(x_1, \dots, x_n) < 0$$, $$(x_1, \dots, x_n)$$ is a (either local or global) maximum of $$f$$.
+
 
 ```python
 def hessian(expr, x_val, y_val):
@@ -292,9 +297,23 @@ def laplacian(expr, x_val, y_val):
                                  
     return sum(l)
 ```
+<code>
+def hessian(expr, x_val, y_val):
+    hessian_matrix = sympy.Matrix([[sympy.diff(expr, v1, v2)
+                                    for v1 in (x, y)]
+                                    for v2 in (x, y)])
+    return float(hessian_matrix.subs([(x, x_val), (y, y_val)]).det())
+
+def laplacian(expr, x_val, y_val):
+    l = [float(sympy.diff(expr, v, v).subs([(x, x_val), (y, y_val)]))
+        for v in (x, y)]
+                                 
+    return sum(l)
+</code>
 
 
-# Altro
+
+# <center>Altro</center>
 
 ## Cosa si intende per Data Mining
 
