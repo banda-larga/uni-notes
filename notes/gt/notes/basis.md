@@ -16,7 +16,7 @@ Un vertice $$v$$ è detto **incidente** ad un lato $$e$$ se $$v \in e$$. I due v
 - $$E(X, Y)$$: insieme di tutti i lati $$X-Y$$ in un insieme $$E$$.
 - $$E(v)$$ insieme di tutti i lati in $$E$$ incidenti a $$v$$.
 
-$$x, y$$ di $$G$$ sono _adiacenti_ (vicini) se $${x, y}$$ è un lato di $$G$$. Due lati sono adiacenti se hanno un estremo in comune.
+$$x, y$$ di $$G$$ sono _adiacenti_ (vicini) se $$\{x, y\}$$ è un lato di $$G$$. Due lati sono adiacenti se hanno un estremo in comune.
 
 Se tutti i vertici di $$G$$ sono adiacenti a due a due, $$G$$ è detto **completo** (cricca). Un grafo completo di $$n$$ vertici è un $$K^n$$, e $$K^3$$ è detto **triangolo**.
 
@@ -25,7 +25,7 @@ Coppie di vertici o lati non adiacenti sono detti **indipendenti**. Insiemi indi
 <span class="newthought">Omomorfismo</span>: siano $$G=(V, E)$$ e $$G'=(V', E')$$ due grafi. Una mappa $$\phi : V \to V'$$ è detto **omomorfismo** da $$G$$ a $$G'$$ se preserva l'adiacenza dei vertici, cioè se 
 
 $$
-{\phi(x), \phi(y)} \in E' \forall {x, y} \in E
+\{\phi(x), \phi(y)\} \in E' \forall \{x, y\} \in E
 $$
 
 se per ogni vertice $$x'$$ nell'immagine di $$\phi$$, la sua inversa $$\phi^{-1}(x')$$ è un un insieme di vertici indipendenti in $$G$$.
@@ -39,7 +39,7 @@ Un isomorfismo da $$G$$ in se stesso è detto _automorfismo_. {% include marginn
 ### Grado
 
 Prendiamo un grafo non vuoto $$G=(V, E)$$. Il vicinato di un vertice $$v$$ è indicato da $$N_{G}(v)$$.
-Il **grado** di un nodo $$v$$, $$d_{G}(v)$$ è il numero di lati incidenti (la cardinalità di $$N(v)$$). Un vertice con grado zero è detto isolato. Il numero $$\delta (G) = \min{d(v) | v \in V}$$ è il **grado minimo**. Il **grado massimo** invece è indicato con $$\Delta (G) = \max{d(v) | v \in V}$$. 
+Il **grado** di un nodo $$v$$, $$d_{G}(v)$$ è il numero di lati incidenti (la cardinalità di $$N(v)$$). Un vertice con grado zero è detto isolato. Il numero $$\delta (G) = \min \{d(v) | v \in V\}$$ è il **grado minimo**. Il **grado massimo** invece è indicato con $$\Delta (G) = \max \{d(v) | v \in V\}$$. 
 
 Se tutti i vertici di $$G$$ hanno lo stesso grado $$k$$, $$G$$ è detto $$k$$-regolare. 
 
@@ -73,34 +73,40 @@ La lunghezza del ciclo più lungo è chiamata **circonferenza** del grafo $$G$$.
 
 Possiamo dire: se io forzo una quantità creerò dei cicli/cammini lunghi? Ci sono modi per capire le relazioni tra le quantità che caratterizzano il grafo? Un ciclo in un grafo biologico può avere una certa importante. 
 
-$$Fatto 3$$: $$\forall G $$ con grado minimo 2 $$\delta (G) \ge 2$$, contiene un cammino di lunghezza pari al grado minimo e un ciclo di lunghezza almeno grado minimo più uno $$\delta (G) + 1$$. 
+<span class="newthought">Fatto</span>: $$\forall G$$ con grado minimo 2 $$\delta (G) \ge 2$$, contiene un cammino di lunghezza pari al grado minimo e un ciclo di lunghezza almeno grado minimo più uno $$\delta (G) + 1$$. 
 
 **dim**: Prendiamo un grafo $$G$$, prendo il più lungo cammino del grafo. Guardo i neighbors (vicinato) di $$v_k$$. Tutti i vicini del cammino $$P_k$$ devono stare sul cammino. Se ci fosse potremmo allungare il cammino. Siccome è di lunghezza massima, non possiamo allungare il cammino. $$N(v_k) \in P_k$$. Il grado di $$v_k$$, $$k \ge d(v_k) \ge \delta v_k$$. 
 
 Dobbiamo dimostrare che esista un ciclo di lunghezza maggiore di 1. Andiamo a prendere il primo vertice che è un vicino di $$v_k$$. Almeno la cardinalità di $$v_k$$ + 1 per tornare indietro. $$C$$ è lungo almeno $$\delta (G) + 1$$ altrimenti non posso chiudere il ciclo. 
 
-\'E semplice trovare questa relazione. 
+E' semplice trovare questa relazione. 
 
 Introduciamo ora il concetto di **distanza**. Un oggetto come un grafo, essendo in una metrica non euclidea, non è così banale definire una distanza. Induciamo una nozione di distanza fra due vertici di un grafo. 
 
 Preso $$G =(V, E)$$, $$\forall i, j \in V$$, allora $$d(i, j)$$ distanza. Se $$i, j$$ sono connessi in $$G$$ da almeno un cammino allora $$d(i, j)$$ è la lunghezza del cammino più breve, altrimenti (se il grafo è non è connesso allora la distanza è infinita) $$d(i, j) = \inf$$. 
 
 A questo punto possiamo definire il concetto di **diametro** sul grafo. Il diametro non è altro che la distanza massima fra ogni coppia di vertici (max max)
+
 $$
 diam(G) = \max_{i, j \in V} d(i, j)
 $$
+
 Il **raggio** del grafo ($$rad(G)$$) viene definito come per una circonferenza: 
+
 $$
 rad(G) = \min_{i \in V} \max_{j \in V} d(i, j)
 $$
+
 Se è un raggio ci aspettiamo una relazione simile (la metà del diametro). 
 
 Il raggio è sicuramente più piccolo del diametro: $$rad(G) \le diam(G) \le ?$$. Chiamiamo $$x \in V$$ un vertice tc $$d(x, v) \le rad(G)$$ (il massimo è minimizzato su questo vertice). (x è tipo il centro del grafo - uno dei centri)
 
 Prendiamo qualsiasi vertice $$u, v \in V$$:
+
 $$
 d(u, v) \le d(u, x) + d(x, v)
 $$
+
 Ciascun di questi elementi è più grande $$\gt rand(G)$$. Per qualsiasi coppia di vertici la loro distanza è più piccola di $$2 rad(G)$$. 
 
 Cosa hanno a che fare raggio e diametro con i cicli? 
@@ -117,7 +123,7 @@ Un'altra cosa interessante è la **connettività** di un grafo. Un grafo è **co
 
 Preso un grafo $$G$$ una _componente_ è un qualunque insieme massimale di vertici connessi (sottografo connesso). 
 
-$$G$$ è $$k$$-connesso se $$|V| \gt K$$ e $$\forall X V$ con $$|X| < K$$, il sottografo indotto da $$V/X$$ è connesso. Qualsiasi grafo è $$0$$-connesso e sono $$1$$-connessi quelli semplicemente connessi (tranne $$K_1$$).
+$$G$$ è $$k$$-connesso se $$|V| \gt K$$ e $$\forall X V$ con $$|X| \lt K$$, il sottografo indotto da $$V/X$$ è connesso. Qualsiasi grafo è $$0$$-connesso e sono $$1$$-connessi quelli semplicemente connessi (tranne $$K_1$$).
 
 Il massimo intero $$k$$ t.c. $$G$$ è $$k$$-connesso è la connettività di $$G$$.
 
