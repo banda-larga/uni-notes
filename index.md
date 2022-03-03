@@ -10,5 +10,6 @@ You too may help make these notes better by submitting your improvements via [Gi
 ## Notes
 
 1. [Algorithms for Massive Datasets](notes/afmds/): appunti del corso (*under construction*).
-2. [Graph Neural Networks](notes/gnn/): introduzione.
-3. [JAX](notes/jax/): guida a JAX.
+2. [Teoria dei Grafi](notes/gt/): appunti del corso (*under construction*).
+3. [Graph Neural Networks](notes/gnn/): introduzione.
+4. [JAX](notes/jax/): guida a JAX.

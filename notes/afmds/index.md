@@ -297,6 +297,33 @@ def laplacian(expr, x_val, y_val):
     return sum(l)
 ```
 
+### Multivariate Functions 
+
+We speak of **multivatiate functions** if they have $$\mathbb{R}^d$$ as codomain, with $$d \in \N$$. We can have _mono-variable_ multivariate function (domain is $$\mathbb{R}$$) and _multi-variable_ multivariate function ($$f: \mathbb{R}^n \to \mathbb{R}^d$$). 
+
+Let $$f: \mathbb{R}^n \mapsto \mathbb{R}^m$$, and given $$\mathbf{x} = [x_j]_n$$ and $$\mathbf{y} = [y_i]_m$$, let $$\mathbf{y} = f(\mathbf{x})$$. The _Jacobian_ of $$f$$ is defined as the $$m \times n$$ matrix:
+
+$$
+\mathrm J_f(\mathbf x) = \frac{\partial \mathbf y}{\partial \mathbf x} = \left[ \frac{\partial y_i}{\partial x_j} \right]_{m \times n}
+$$
+
+The Jacobian of $$f(x) = \begin{pmatrix} x \\ x^2 \end{pmatrix}$$ is the column vector:
+
+$$
+\frac{\partial f(x)}{\partial x} =
+\left[ \frac{\partial f(x)_i}{\partial x} \right]_2 =
+\begin{pmatrix} 1 \\ 2x \end{pmatrix}
+$$
+
+# <center>Technical preliminaries</center>
+
+### Colab
+
+Colab notebooks are Jupyter notebooks that run in the cloud and are highly integrated with Google Drive, making them easy to set up, access, and share. You can use accelerators like GPUs and TPUs for free (there are time restrictions). 
+
+### Google Cloud Platform 
+
+Only if you want to have more control of resources, deploy services and you want to pay. There are several providers offering cloud based services: _AWS_, _Azure_, _GCP_.
 
 # <center>Altro</center>
 
