@@ -2,6 +2,62 @@
 layout: post
 title: Prima parte
 ---
+Un **grafo** è una coppia $$G=(V, E)$$ di insiemi (_nodi/vertici_ e _lati/archi_) tali che $$E \subset |V|^2$$.
+(Un grafo con insieme di vertici $$V$$ è detto essere un grafo _su_ $$V$$).
+
+Il numero di vertici (nodi) di un grafo è il suo **ordine**.
+I grafi sono _FINITI, INFINITI, NUMERABILI ..._ in base al loro ordine. 
+
+Il grafo vuoto: $$(\emptyset, \emptyset) = \emptyset$$.
+Un grafo di ordine $$0$$ o $$1$$ è detto _triviale_.
+
+Un vertice $$v$$ è detto **incidente** ad un lato $$e$$ se $$v \in e$$. I due vertici incidenti con un lato sono le sue _estremità_. 
+
+- $$E(X, Y)$$: insieme di tutti i lati $$X-Y$$ in un insieme $$E$$.
+- $$E(v)$$ insieme di tutti i lati in $$E$$ incidenti a $$v$$.
+
+$$x, y$$ di $$G$$ sono _adiacenti_ (vicini) se $${x, y}$$ è un lato di $$G$$. Due lati sono adiacenti se hanno un estremo in comune.
+
+Se tutti i vertici di $$G$$ sono adiacenti a due a due, $$G$$ è detto **completo** (cricca). Un grafo completo di $$n$$ vertici è un $$K^n$$, e $$K^3$$ è detto **triangolo**.
+
+Coppie di vertici o lati non adiacenti sono detti **indipendenti**. Insiemi indipendenti di vertici sono chiamati **stabili**.
+
+<span class="newthought">OMOMORFISMO</span>: siano $$G=(V, E)$$ e $$G'=(V', E')$$ due grafi. Una mappa $$\phi : V \to V'$$ è detto **omomorfismo** da $$G$$ a $$G'$$ se preserva l'adiacenza dei vertici, cioè se 
+
+$$
+{\phi(x), \phi(y)} \in E' \forall {x, y} \in E
+$$
+
+se per ogni vertice $$x'$$ nell'immagine di $$\phi$$, la sua inversa $$\phi^{-1}(x')$$ è un un insieme di vertici indipendenti in $$G$$.
+
+<span class="newthought">ISOMORFISMO</span>: se $$\gamma$$ è **biettiva** e $$\gamma^{-1}$$ è un omomorfismo allora $$\gamma$$ è un **isomorfismo**. 
+
+Un isomorfismo da $$G$$ in se stesso è detto _automorfismo_. {% include marginnote.html id="mn-invariants" note="Una mappa che prende grafi e assegna valori uguali a grafi isomorfi è detta **invariante**" %}
+
+<span class="newthought">SOTTOGRAFO</span>: se $$G'=(V', E')$$ è tale che $$V' \subseteq V$$ e $$E' \subseteq [V']\cap E$$ allora $$G'$$ è un **sottografo** di $$G$$ (G è **supergrafo**).{% include marginnote.html id="mn-subgraphs" note="Se $$G' \subseteq G$$ e $$G' \neq G$$, $$G$$ è un sottografo proprio. Se $$G' \subseteq G$$ e $$E' \subseteq [V']^2 \cap e$$, $$G$$ è un sottografo **indotto**." %}
+
+### Grado
+
+Prendiamo un grafo non vuoto $$G=(V, E)$$. Il vicinato di un vertice $$v$$ è indicato da $$N_{G}(v)$$.
+Il **grado** di un nodo $$v$$, $$d_{G}(v)$$ è il numero di lati incidenti (la cardinalità di $$N(v)$$). Un vertice con grado zero è detto isolato. 
+
+Il numero $$\delta (G) = \min{d(v) | v \in V}$$ è il **grado minimo**. Il **grado massimo** invece è indicato con $$\Delta (G) = \max{d(v) | v \in V}$$. 
+
+Se tutti i vertici di $$G$$ hanno lo stesso grado $$k$$, $$G$$ è detto $$k$$-regolare. 
+
+Grado medio:{% include marginnote.html id="mn-avgdegree" note="vediamo facilmente che $$\delta(G) \le d(G) \le \Delta(v)$$." %}
+
+$$
+d(G) = \frac{1}{|V|} \sum_{v \in V} d(v)
+$$
+
+Se vogliamo farci del male definiamo la **densità dei lati**. 
+
+$$
+\epsilon (G) = |E| \ |V|
+$$
+
+## Seconda parte
 
 Andiamo a vedere altre strutture: 
 
@@ -51,7 +107,7 @@ Ciascun di questi elementi è più grande $$\gt rand(G)$$. Per qualsiasi coppia 
 
 Cosa hanno a che fare raggio e diametro con i cicli? 
 
-$$Fatto 4:$$ $$\forall G$$ che ha almeno un ciclo, soddisfa (girth calibro) $$g(G) \lt 2 diam(G) + 1$$. C'è quindi un limite alla lunghezza del ciclo più breve di un grafo. 
+<span class="newthought">Fatto:</span> $$\forall G$$ che ha almeno un ciclo, soddisfa (girth calibro) $$g(G) \lt 2 diam(G) + 1$$. C'è quindi un limite alla lunghezza del ciclo più breve di un grafo. 
 
 **dim**: Prendiamo un grafo che contiene almeno un ciclo. Sia $$C$$ il ciclo di lunghezza minima $$g(G)$$. Prendiamo due vertici agli estremi opposti (tagliano il ciclo in due cammini il più possibile uguali). Assumo per assurdo che $$g(G) \ge 2 diam(G) + 2$$ sia falsa. 
 
@@ -63,13 +119,15 @@ Un'altra cosa interessante è la **connettività** di un grafo. Un grafo è **co
 
 Preso un grafo $$G$$ una _componente_ è un qualunque insieme massimale di vertici connessi (sottografo connesso). 
 
-$$G$$ è $$k$$-connesso se $$|V| > K$$ e $$\forall X V$ con $$|X| < K$$, il sottografo indotto da $$V/X$$ è connesso. Qualsiasi grafo è $$0$$-connesso e sono $$1$$-connessi quelli semplicemente connessi (tranne $$K_1$$).
+$$G$$ è $$k$$-connesso se $$|V| \gt K$$ e $$\forall X V$ con $$|X| < K$$, il sottografo indotto da $$V/X$$ è connesso. Qualsiasi grafo è $$0$$-connesso e sono $$1$$-connessi quelli semplicemente connessi (tranne $$K_1$$).
 
-Il massimo intero $$k$$ t.c. $$G$$ è $$k$$-connesso è la connettività di $$G$$.  
+Il massimo intero $$k$$ t.c. $$G$$ è $$k$$-connesso è la connettività di $$G$$.
+  
 $$
 \kappa(G)
 $$
-$$Teo: $$ Se $$G$$ non appartiene a $$K_0, K_1$$, cioè non è banale, allora la cardinalità di $$G$$, $$k(G) \le \lambda(G) \le \delta (G)$$ (dove nella lezione $$|F|$$ a posto di $$\lambda(G)$$ è qualisasi insieme minimo di archi la cui rimozione sconnette il grafo. $$\lambda(G) è la connettività degli archi$$). 
+
+<span class="newthought">Teo:</span> Se $$G$$ non appartiene a $$K_0, K_1$$, cioè non è banale, allora la cardinalità di $$G$$, $$k(G) \le \lambda(G) \le \delta (G)$$ (dove nella lezione $$|F|$$ a posto di $$\lambda(G)$$ è qualisasi insieme minimo di archi la cui rimozione sconnette il grafo. $$\lambda(G) è la connettività degli archi$$). 
 
 Se prendiamo due cliques e taglio l'unico arco che le connette, $$|F| = 1$$ e $$\delta(G) = n+1$$. 
 
