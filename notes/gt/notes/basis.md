@@ -6,7 +6,7 @@ Un **grafo** è una coppia $$G=(V, E)$$ di insiemi (_nodi/vertici_ e _lati/archi
 (Un grafo con insieme di vertici $$V$$ è detto essere un grafo _su_ $$V$$).
 
 Il numero di vertici (nodi) di un grafo è il suo **ordine**.
-I grafi sono _FINITI, INFINITI, NUMERABILI ..._ in base al loro ordine. 
+I grafi sono _finiti, infiniti, numerabili ..._ in base al loro ordine. 
 
 Il grafo vuoto: $$(\emptyset, \emptyset) = \emptyset$$.
 Un grafo di ordine $$0$$ o $$1$$ è detto _triviale_.
@@ -22,7 +22,7 @@ Se tutti i vertici di $$G$$ sono adiacenti a due a due, $$G$$ è detto **complet
 
 Coppie di vertici o lati non adiacenti sono detti **indipendenti**. Insiemi indipendenti di vertici sono chiamati **stabili**.
 
-<span class="newthought">OMOMORFISMO</span>: siano $$G=(V, E)$$ e $$G'=(V', E')$$ due grafi. Una mappa $$\phi : V \to V'$$ è detto **omomorfismo** da $$G$$ a $$G'$$ se preserva l'adiacenza dei vertici, cioè se 
+<span class="newthought">Omomorfismo</span>: siano $$G=(V, E)$$ e $$G'=(V', E')$$ due grafi. Una mappa $$\phi : V \to V'$$ è detto **omomorfismo** da $$G$$ a $$G'$$ se preserva l'adiacenza dei vertici, cioè se 
 
 $$
 {\phi(x), \phi(y)} \in E' \forall {x, y} \in E
@@ -30,18 +30,16 @@ $$
 
 se per ogni vertice $$x'$$ nell'immagine di $$\phi$$, la sua inversa $$\phi^{-1}(x')$$ è un un insieme di vertici indipendenti in $$G$$.
 
-<span class="newthought">ISOMORFISMO</span>: se $$\gamma$$ è **biettiva** e $$\gamma^{-1}$$ è un omomorfismo allora $$\gamma$$ è un **isomorfismo**. 
+<span class="newthought">Isomorfismo</span>: se $$\gamma$$ è **biettiva** e $$\gamma^{-1}$$ è un omomorfismo allora $$\gamma$$ è un **isomorfismo**. 
 
 Un isomorfismo da $$G$$ in se stesso è detto _automorfismo_. {% include marginnote.html id="mn-invariants" note="Una mappa che prende grafi e assegna valori uguali a grafi isomorfi è detta **invariante**" %}
 
-<span class="newthought">SOTTOGRAFO</span>: se $$G'=(V', E')$$ è tale che $$V' \subseteq V$$ e $$E' \subseteq [V']\cap E$$ allora $$G'$$ è un **sottografo** di $$G$$ (G è **supergrafo**).{% include marginnote.html id="mn-subgraphs" note="Se $$G' \subseteq G$$ e $$G' \neq G$$, $$G$$ è un sottografo proprio. Se $$G' \subseteq G$$ e $$E' \subseteq [V']^2 \cap e$$, $$G$$ è un sottografo **indotto**." %}
+<span class="newthought">Sottografo</span>: se $$G'=(V', E')$$ è tale che $$V' \subseteq V$$ e $$E' \subseteq [V']\cap E$$ allora $$G'$$ è un **sottografo** di $$G$$ (G è **supergrafo**).{% include marginnote.html id="mn-subgraphs" note="Se $$G' \subseteq G$$ e $$G' \neq G$$, $$G$$ è un sottografo proprio. Se $$G' \subseteq G$$ e $$E' \subseteq [V']^2 \cap e$$, $$G$$ è un sottografo **indotto**." %}
 
 ### Grado
 
 Prendiamo un grafo non vuoto $$G=(V, E)$$. Il vicinato di un vertice $$v$$ è indicato da $$N_{G}(v)$$.
-Il **grado** di un nodo $$v$$, $$d_{G}(v)$$ è il numero di lati incidenti (la cardinalità di $$N(v)$$). Un vertice con grado zero è detto isolato. 
-
-Il numero $$\delta (G) = \min{d(v) | v \in V}$$ è il **grado minimo**. Il **grado massimo** invece è indicato con $$\Delta (G) = \max{d(v) | v \in V}$$. 
+Il **grado** di un nodo $$v$$, $$d_{G}(v)$$ è il numero di lati incidenti (la cardinalità di $$N(v)$$). Un vertice con grado zero è detto isolato. Il numero $$\delta (G) = \min{d(v) | v \in V}$$ è il **grado minimo**. Il **grado massimo** invece è indicato con $$\Delta (G) = \max{d(v) | v \in V}$$. 
 
 Se tutti i vertici di $$G$$ hanno lo stesso grado $$k$$, $$G$$ è detto $$k$$-regolare. 
 
@@ -122,7 +120,7 @@ Preso un grafo $$G$$ una _componente_ è un qualunque insieme massimale di verti
 $$G$$ è $$k$$-connesso se $$|V| \gt K$$ e $$\forall X V$ con $$|X| < K$$, il sottografo indotto da $$V/X$$ è connesso. Qualsiasi grafo è $$0$$-connesso e sono $$1$$-connessi quelli semplicemente connessi (tranne $$K_1$$).
 
 Il massimo intero $$k$$ t.c. $$G$$ è $$k$$-connesso è la connettività di $$G$$.
-  
+
 $$
 \kappa(G)
 $$
