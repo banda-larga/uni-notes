@@ -129,7 +129,7 @@ Non tutti gli archi di un cammino $$P$$ (di lunghezza minima) stanno su $$C$$ (i
 
 Un'altra cosa interessante è la **connettività** di un grafo. Un grafo è **connesso** se è non-vuoto e ogni coppia di vertici sono uniti da un cammino in $$G$$. 
 
-Preso un grafo $$G$$ una _componente_ è un qualunque insieme massimale di vertici connessi (sottografo connesso). Un grafo $$G$$ è $$k$$-connesso se $$|V| \gt K$$ e $$\forall X, V$$ con $$\vert X\vert \lt K$$, il sottografo indotto da $$V \setminus X$$ è connesso. Qualsiasi grafo è $$0$$-connesso e sono $$1$$-connessi quelli semplicemente connessi tranne $$K_{1}$$.
+Preso un grafo $$G$$ una _componente_ è un qualunque insieme massimale di vertici connessi (sottografo connesso). Un grafo $$G$$ è $$k$$-connesso se $$\vert V\vert \gt K$$ e $$\forall X, V$$ con $$\vert X\vert \lt K$$, il sottografo indotto da $$V \setminus X$$ è connesso. Qualsiasi grafo è $$0$$-connesso e sono $$1$$-connessi quelli semplicemente connessi tranne $$K_{1}$$.
 
 Il massimo intero $$k$$ t.c. $$G$$ è $$k$$-connesso è la connettività di $$G$$.
 
