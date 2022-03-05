@@ -52,7 +52,7 @@ $$
 Se vogliamo farci del male definiamo la **densità dei lati**. 
 
 $$
-\epsilon (G) = |E| \ |V|
+\epsilon (G) = |E| \setminus |V|
 $$
 
 ## Seconda parte
@@ -81,7 +81,7 @@ Un lato che unisce due vertici di un ciclo ma che non è un lato del ciclo è de
 
 Ci sono modi per capire le relazioni tra le quantità che caratterizzano il grafo? Un ciclo in un grafo biologico può avere una certa importanza. 
 
-<span class="newthought">Prop</span>: Ogni $$G$$ con grado minimo 2 $$\delta (G) \ge 2$$, contiene un cammino di lunghezza pari al grado minimo e un ciclo di lunghezza almeno grado minimo più uno $$\delta (G) + 1$$. 
+<span class="newthought">Prop 1</span>: Ogni $$G$$ con grado minimo 2 $$\delta (G) \ge 2$$, contiene un cammino di lunghezza pari al grado minimo e un ciclo di lunghezza almeno grado minimo più uno $$\delta (G) + 1$$. 
 
 **dim**: Prendiamo un grafo $$G$$, prendo il più lungo cammino del grafo. Guardo i neighbors (vicinato) di $$v_k$$. Tutti i vicini del vertice $$v_k$$ devono stare sul cammino. Se ci fosse un vicino non sul cammino potremmo allungare il cammino con un nodo in $$V$$ e non sarebbe più quello di lunghezza massima. Quindi abbiamo detto che non possiamo allungare il cammino: $$N(v_k) \in P_k$$. Il grado di $$v_k$$, $$k \ge d(v_k) \ge \delta v_k$$. 
 
@@ -119,7 +119,7 @@ Ciascun di questi elementi è più grande $$\gt rand(G)$$. Per qualsiasi coppia 
 
 Cosa hanno a che fare raggio e diametro con i cicli? 
 
-<span class="newthought">Fatto:</span> Ogni grafo $$G$$ con almeno un ciclo soddisfa (girth calibro) $$g(G) \lt 2 diam(G) + 1$$. C'è quindi un limite alla lunghezza del ciclo più breve di un grafo. 
+<span class="newthought">Fatto 1</span>: Ogni grafo $$G$$ con almeno un ciclo soddisfa (girth calibro) $$g(G) \lt 2 diam(G) + 1$$. C'è quindi un limite alla lunghezza del ciclo più breve di un grafo. 
 
 **dim**: Prendiamo un grafo che contiene almeno un ciclo. Sia $$C$$ il ciclo di lunghezza minima $$g(G)$$. Prendiamo due vertici agli estremi opposti (tagliano il ciclo in due cammini il più possibile uguali). Assumo per assurdo che $$g(G) \ge 2 diam(G) + 2$$ sia falsa. 
 
@@ -131,7 +131,7 @@ Un'altra cosa interessante è la **connettività** di un grafo. Un grafo è **co
 
 Preso un grafo $$G$$ una _componente_ è un qualunque insieme massimale di vertici connessi (sottografo connesso). 
 
-Un grafo $$G$$ è $$k$$-connesso se $$|V| > K$$ e $$\forall X V$ con $$|X| < K$$, il sottografo indotto da $$V \setminus X$$ è connesso. Qualsiasi grafo è $$0$$-connesso e sono $$1$$-connessi quelli semplicemente connessi (tranne $$K_1$$).
+Un grafo $$G$$ è $$k$$-connesso se $$|V| > K$$ e $$\forall X,V$$ con $$|X| < K$$, il sottografo indotto da $$V \setminus X$$ è connesso. Qualsiasi grafo è $$0$$-connesso e sono $$1$$-connessi quelli semplicemente connessi (tranne $$K_1$$).
 
 Il massimo intero $$k$$ t.c. $$G$$ è $$k$$-connesso è la connettività di $$G$$.
 
@@ -139,11 +139,12 @@ $$
 \kappa(G)
 $$
 
-<span class="newthought">Teo</span>: Se $$G$$ non appartiene a $$K_0, K_1$$, cioè non è banale, allora la cardinalità di $$G$$, $$k(G) \le \lambda (G) \le \delta (G)$$ (dove nella lezione si è usato $$|F|$$ al posto di $$\lambda(G)$$, qualisasi insieme minimo di archi la cui rimozione sconnette il grafo. $$\lambda(G)$$ è la connettività degli archi). 
+<span class="newthought">Teo 1</span>: Se $$G$$ non appartiene a $$K_0, K_1$$, cioè non è banale, allora la cardinalità di $$G$$, $$\kappa (G) \le \lambda (G) \le \delta (G)$$.
+{% include marginnote.html id="mn-lambdag" note="(dove nella lezione si è usato $$|F|$$ al posto di $$\lambda (G)$$, qualsiasi insieme minimo di archi la cui rimozione sconnette il grafo $$\lambda (G)$$ è la connettività degli archi)" %}. 
 
-Se prendiamo due cliques e taglio l'unico arco che le connette, $$|F| = 1$$ e $$\delta(G) = n+1$$. 
+Se prendiamo due cliques e taglio l'unico arco che le connette: $$|F| = 1$$ e $$\delta (G) = n+1$$. 
 
-**dim**: $$\kappa (G) \le |F|$$ (e Fissiamo F) e lo mostriamo nei prossimi casi. Prendiamo $$G'=(V, E \setminus F)$$:
+**dim**: $$\kappa (G) \le |F|$$ (e fissiamo F), lo mostriamo nei prossimi casi. Prendiamo $$G'=(V, E \setminus F)$$:
 
 - $$G$$ ha un vertice $$v$$ che non è incidente con un lato in $$F$$ (non sta tra i sottografi connessi da $$F$$). Chiamiamo $$C$$ la componente di $$G'$$ che contiene $$v$$ e consideriamo l'insieme di vertici di $$C$$ che sono incidenti con un lato di $$F$$: $$V_C$$. Se rimuoviamo questi vertici, allora $$v$$ è disconnesso da ogni componente di $$G$$ (starà in un sottografo, componente, sconnesso dall'altra componente). 
 Allora $$\kappa (G) \lt |V_C|$$. Dall'altro lato, nessun lato in $$F$$ Può avere entrambi i vertici in $$C$$ (altrimenti $$F$$ non è minimo): $$\kappa (G) \lt |V_C| \lt |F|$$. 
@@ -161,20 +162,19 @@ I vertici con grado $$1$$ in un albero sono le sue **foglie**, gli altri sono i 
 
 Questo teorema caratterizza quali grafi sono alberi. 
 
-<span class="newthought">Teo</span>: _i seguenti enunciati sono equivalenti per un grafo_ $$T$$:
+<span class="newthought">Teo 2</span>: _i seguenti enunciati sono equivalenti per un grafo_ $$T$$:
 
 - $$T$$ è un albero.
 - ogni coppia di vertici in $$T$$ sono uniti da un unico cammino in $$T$$.
 - $$T$$ è minimamente connesso, per esempio $$T$$ è connesso ma $$T-e$$ non lo è, per ogni lato $$e \in T$$
 - $$T$$ è _aciclico massimale_, $$T$$ non contiene cicli ma $$T + xy$$ sì, $$\forall$$ due vertici in $$T$$ non adiacenti. 
 
-Un **albero di copertura** (spanning tree) di un grafo connesso $$G =(V, E)$$ è un sottografo $$T=(V, E')$$ che è un albero. {% include marginnote.html id="mn-acopertura" note="Un'applicazione del teorema molto frequente è che ogni grafo connesso contiene un albero di copertura: o prendiamo il minimo sottografo connesso di copertura e usiamo la terza, o prendiamo un sottografo aciclico massimale e usiamo la quarta." %}
+Un **albero di copertura** (spanning tree) di un grafo connesso $$G =(V, E)$$ è un sottografo $$T=(V, E')$$ che è un albero.{% include marginnote.html id="mn-acopertura" note="Un'applicazione del teorema molto frequente è che ogni grafo connesso contiene un albero di copertura: o prendiamo il minimo sottografo connesso di copertura e usiamo la terza, o prendiamo un sottografo aciclico massimale e usiamo la quarta." %}
 
 Quando $$T$$ è un albero di copertura di $$G$$, i lati in $$E(G) \setminus E(T)$$ sono le **corde** di $$T$$ in $$G$$. 
 
-<span class="newthought">Cor</span>: Un grafo connesso con $$n$$ vertici è un albero sse ha $$n-1$$ vertici. 
+<span class="newthought">Cor 1</span>: Un grafo connesso con $$n$$ vertici è un albero sse ha $$n-1$$ vertici. 
 
 **dim**: per induzione su $$i$$ si mostra che il sottografo coperto dai primi $$i$$ vertici ha $$i-1$$ vertici. Per $$i=n$$ questo dimostra l'implicazione. Al contrario, preso $$G$$ un qualsiasi grafo connesso con $$n$$ vertici e $$n+1$$ lati. Diciamo $$G'$$ un albero di copertura in $$G$$. Siccome $$G$$ ha $$n-1$$ lati dalla prima implicazione, concludiamo dicendo che $$G=G'$$. 
 
-<span class="newthought">Cor</span>: Se $$T$$ è un albero e $$G$$ è un qualunque grafo con $$\delta (G) \ge |T| + 1$$ allora $$T \subseteq G$$, ad esempio $$G$$ ha un sottografo isomorfo a $$T$$. 
-  
+<span class="newthought">Cor 2</span>: Se $$T$$ è un albero e $$G$$ è un qualunque grafo con $$\delta (G) \ge |T| + 1$$ allora $$T \subseteq G$$, ad esempio $$G$$ ha un sottografo isomorfo a $$T$$. 
