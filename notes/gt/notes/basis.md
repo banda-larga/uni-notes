@@ -39,7 +39,7 @@ Un isomorfismo da $$G$$ in se stesso è detto _automorfismo_. {% include marginn
 ### Grado
 
 Prendiamo un grafo non vuoto $$G=(V, E)$$. Il vicinato di un vertice $$v$$ è indicato da $$N_{G}(v)$$.
-Il **grado** di un nodo $$v$$, $$d_{G}(v)$$ è il numero di lati incidenti (la cardinalità di $$N(v)$$). Un vertice con grado zero è detto isolato. Il numero $$\delta (G) = \min \{d(v) | v \in V\}$$ è il **grado minimo**. Il **grado massimo** invece è indicato con $$\Delta (G) = \max \{d(v) | v \in V\}$$. 
+Il **grado** di un nodo $$v$$, $$d_{G}(v)$$ è il numero di lati incidenti (la cardinalità di $$N(v)$$). Un vertice con grado zero è detto isolato. Il numero $$\delta (G) = \min \{d(v) | v \in V\}$$ è il **grado minimo**. Il **grado massimo** invece è indicato con $$\Delta (G) = \max \{d(v) \vert v \in V\}$$. 
 
 Se tutti i vertici di $$G$$ hanno lo stesso grado $$k$$, $$G$$ è detto $$k$$-regolare. 
 
@@ -52,7 +52,7 @@ $$
 Se vogliamo farci del male definiamo la **densità dei lati**. 
 
 $$
-\epsilon (G) = |E| \setminus |V|
+\epsilon (G) = \vert E\vert \setminus \vert V\vert
 $$
 
 ## Seconda parte
@@ -119,7 +119,7 @@ Ciascun di questi elementi è più grande $$\gt rand(G)$$. Per qualsiasi coppia 
 
 Cosa hanno a che fare raggio e diametro con i cicli? 
 
-<span class="newthought">Fatto 1</span>: Ogni grafo $$G$$ con almeno un ciclo soddisfa (girth calibro) $$g(G) \lt 2 diam(G) + 1$$. C'è quindi un limite alla lunghezza del ciclo più breve di un grafo. 
+<span class="newthought">Fatto 1</span>: Ogni grafo $$G$$ con almeno un ciclo soddisfa (calibro) $$g(G) \lt 2 diam(G) + 1$$. C'è quindi un limite alla lunghezza del ciclo più breve di un grafo. 
 
 **dim**: Prendiamo un grafo che contiene almeno un ciclo. Sia $$C$$ il ciclo di lunghezza minima $$g(G)$$. Prendiamo due vertici agli estremi opposti (tagliano il ciclo in due cammini il più possibile uguali). Assumo per assurdo che $$g(G) \ge 2 diam(G) + 2$$ sia falsa. 
 
@@ -129,9 +129,7 @@ Non tutti gli archi di un cammino $$P$$ (di lunghezza minima) stanno su $$C$$ (i
 
 Un'altra cosa interessante è la **connettività** di un grafo. Un grafo è **connesso** se è non-vuoto e ogni coppia di vertici sono uniti da un cammino in $$G$$. 
 
-Preso un grafo $$G$$ una _componente_ è un qualunque insieme massimale di vertici connessi (sottografo connesso). 
-
-Un grafo $$G$$ è $$k$$-connesso se $$|V| > K$$ e $$\forall X,V$$ con $$|X| < K$$, il sottografo indotto da $$V \setminus X$$ è connesso. Qualsiasi grafo è $$0$$-connesso e sono $$1$$-connessi quelli semplicemente connessi (tranne $$K_1$$).
+Preso un grafo $$G$$ una _componente_ è un qualunque insieme massimale di vertici connessi (sottografo connesso). Un grafo $$G$$ è $$k$$-connesso se $$|V| \gt K$$ e $$\forall X, V$$ con $$\vert X\vert \lt K$$, il sottografo indotto da $$V \setminus X$$ è connesso. Qualsiasi grafo è $$0$$-connesso e sono $$1$$-connessi quelli semplicemente connessi tranne $$K_{1}$$.
 
 Il massimo intero $$k$$ t.c. $$G$$ è $$k$$-connesso è la connettività di $$G$$.
 
@@ -139,18 +137,14 @@ $$
 \kappa(G)
 $$
 
-<span class="newthought">Teo 1</span>: Se $$G$$ non appartiene a $$K_0, K_1$$, cioè non è banale, allora la cardinalità di $$G$$, $$\kappa (G) \le \lambda (G) \le \delta (G)$$.
-{% include marginnote.html id="mn-lambdag" note="(dove nella lezione si è usato $$|F|$$ al posto di $$\lambda (G)$$, qualsiasi insieme minimo di archi la cui rimozione sconnette il grafo $$\lambda (G)$$ è la connettività degli archi)" %}. 
+<span class="newthought">Teo 1</span>: Se $$G$$ non appartiene a $$K_0, K_1$$, cioè non è banale, allora la cardinalità di $$G$$, $$\kappa (G) \le \lambda (G) \le \delta (G)$$. {% include marginnote.html id="mn-lambdag" note="(dove nella lezione si è usato $$\vert F \vert$$ al posto di $$\lambda (G)$$, qualsiasi insieme minimo di archi la cui rimozione sconnette il grafo $$\lambda (G)$$ è la connettività degli archi)" %} {% include marginnote.html id="mn-cliquesart" note="Se prendiamo due cliques e taglio l'unico arco che le connette: $$\vert F \vert = 1$$ e $$\delta (G) = n+1$$." %}
 
-Se prendiamo due cliques e taglio l'unico arco che le connette: $$|F| = 1$$ e $$\delta (G) = n+1$$. 
-
-**dim**: $$\kappa (G) \le |F|$$ (e fissiamo F), lo mostriamo nei prossimi casi. Prendiamo $$G'=(V, E \setminus F)$$:
+**dim**: $$\kappa (G) \le \vert F \vert$$ (e fissiamo F), lo mostriamo nei prossimi casi. Prendiamo $$G'=(V, E \setminus F)$$:
 
 - $$G$$ ha un vertice $$v$$ che non è incidente con un lato in $$F$$ (non sta tra i sottografi connessi da $$F$$). Chiamiamo $$C$$ la componente di $$G'$$ che contiene $$v$$ e consideriamo l'insieme di vertici di $$C$$ che sono incidenti con un lato di $$F$$: $$V_C$$. Se rimuoviamo questi vertici, allora $$v$$ è disconnesso da ogni componente di $$G$$ (starà in un sottografo, componente, sconnesso dall'altra componente). 
-Allora $$\kappa (G) \lt |V_C|$$. Dall'altro lato, nessun lato in $$F$$ Può avere entrambi i vertici in $$C$$ (altrimenti $$F$$ non è minimo): $$\kappa (G) \lt |V_C| \lt |F|$$. 
-
+Allora $$\kappa (G) \lt \vert V_C \vert$$. Dall'altro lato, nessun lato in $$F$$ Può avere entrambi i vertici in $$C$$ (altrimenti $$F$$ non è minimo): $$\kappa (G) \lt \vert V_C \vert \lt \vert F\vert$$. 
 - $$G$$ è tale che tutti i vertici sono incidenti con qualche arco di $$F$$. Prendiamo un vertice random e sia $$C$$ la componente di $$G'$$ che lo contiene. Alcuni $$u \in N(v)$$ sono tali che $$(v, u) \in F$$. Gli altri nodi nel vicinato di $$v$$ devono per forza appartenere a $$C$$ ed essere inidenti con lati distinti di $$F$$ (altrimenti non è minimo).
-Possiamo dire che $$d(v) \lt |F|$$, che implica $$d(v) = |F| = \delta (G)$$, perché sappiamo che $$d(v) \le |F|$$. Siccome rimuovere il vicinato di $$v$$ disconnette $$v$$, concludiamo che $$\kappa(G) \le \delta (G) = |F|$$.
+Possiamo dire che $$d(v) \lt \vert F\vert$$, che implica $$d(v) = \vert F\vert = \delta (G)$$, perché sappiamo che $$d(v) \le \vert F\vert$$. Siccome rimuovere il vicinato di $$v$$ disconnette $$v$$, concludiamo che $$\kappa(G) \le \delta (G) = \vert F\vert$$.
 
 ## Alberi e Foreste 
 
@@ -175,6 +169,7 @@ Quando $$T$$ è un albero di copertura di $$G$$, i lati in $$E(G) \setminus E(T)
 
 <span class="newthought">Cor 1</span>: Un grafo connesso con $$n$$ vertici è un albero sse ha $$n-1$$ vertici. 
 
-**dim**: per induzione su $$i$$ si mostra che il sottografo coperto dai primi $$i$$ vertici ha $$i-1$$ vertici. Per $$i=n$$ questo dimostra l'implicazione. Al contrario, preso $$G$$ un qualsiasi grafo connesso con $$n$$ vertici e $$n+1$$ lati. Diciamo $$G'$$ un albero di copertura in $$G$$. Siccome $$G$$ ha $$n-1$$ lati dalla prima implicazione, concludiamo dicendo che $$G=G'$$. 
+**dim**: per induzione su $$i$$ si mostra che il sottografo coperto dai primi $$i$$ vertici ha $$i-1$$ vertici. Per $$i=n$$ questo dimostra l'implicazione. Al contrario, preso $$G$$ un qualsiasi grafo connesso con $$n$$ vertici e $$n+1$$ lati. Diciamo $$G'$$ un albero di copertura in $$G$$. Siccome $$G$$ ha $$n-1$$ lati dalla prima implicazione, concludiamo dicendo che $$G=G'$$.
 
-<span class="newthought">Cor 2</span>: Se $$T$$ è un albero e $$G$$ è un qualunque grafo con $$\delta (G) \ge |T| + 1$$ allora $$T \subseteq G$$, ad esempio $$G$$ ha un sottografo isomorfo a $$T$$. 
+
+<span class="newthought">Cor 2</span>: Se $$T$$ è un albero e $$G$$ è un qualunque grafo con $$\delta (G) \ge \vert T\vert + 1$$ allora $$T \subseteq G$$, ad esempio $$G$$ ha un sottografo isomorfo a $$T$$. 
