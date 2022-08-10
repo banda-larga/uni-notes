@@ -9,7 +9,7 @@ Jax è una libreria Python (duh). E' una libreria simile a _NumPy_ ma con alcuni
 
 Jax usa XLA (Accelerated Linear Algebra - che permette di migliorare la velocità del codice ed avere anche altri miglioramenti anche a livello memoria, ad esempio con BERT aumentano le prestazioni di _7x_ e rende possibile aumentare la batch fino a _5x_) per andare a compilare il codice Numpy e permetterne l'esecuzione su GPUs e TPUs. 
 
-Il codice viene compilato "hunder the hood", con le chiamate che vengono compilate just-in-time ed eseguite. 
+Il codice viene compilato "under the hood", con le chiamate che vengono compilate just-in-time ed eseguite. 
 
 Jax permette di compilare anche le proprie funzioni in kernel ottimizzati per XLA, utilizzando una sola funzione. 
 
